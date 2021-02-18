@@ -18,16 +18,14 @@ public class LockManager : MonoBehaviour
             return Instance;
         }
     }
-    private void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
-
+   
     public LockScript[] locks;
     public int numLocks;
+    public Canvas optionCanvas;
     // Start is called before the first frame update
     void Start()
     {
+        optionCanvas.gameObject.SetActive(false);
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("MainScene"))
         {
             numLocks = 1;
@@ -35,6 +33,10 @@ public class LockManager : MonoBehaviour
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("LockMedium"))
         {
             numLocks = 2;
+        }
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("LockHard"))
+        {
+            numLocks = 3;
         }
         print(locks.Length);
     }
@@ -44,26 +46,31 @@ public class LockManager : MonoBehaviour
     {
         if (locks.Length == 1)
         {
-            for (int i = 0; i < locks.Length; i++)
+            if (locks[0].isLocked == false)
             {
-                if (locks[i].isLocked == false)
-                {
-                    //numLocks--;
-                    FindObjectOfType<Timer>().isTiming = false;
-                }
+               //numLocks--;
+                FindObjectOfType<Timer>().isTiming = false;
             }
         }
         if (locks.Length == 2)
         {
-            for (int i = 0; i < locks.Length; i++)
+            if (locks[0].isLocked == false && locks[1].isLocked == false)
             {
-                if (locks[i].isLocked == false && locks[i + 1].isLocked == false)
-                {
-                    //numLocks--;
-                    FindObjectOfType<Timer>().isTiming = false;
-                }
+                //numLocks--;
+                FindObjectOfType<Timer>().isTiming = false;
             }
         }
-        
+        if (locks.Length == 3)
+        {
+            if (locks[0].isLocked == false && locks[1].isLocked == false && locks[2].isLocked == false)
+            {
+                //numLocks--;
+                FindObjectOfType<Timer>().isTiming = false;
+            }
+        }
+        if(FindObjectOfType<Timer>().isTiming == false)
+        {
+            optionCanvas.gameObject.SetActive(true);
+        }
     }
 }

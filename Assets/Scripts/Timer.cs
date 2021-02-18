@@ -28,6 +28,7 @@ public class Timer : MonoBehaviour
             if (minutes <= 0 && seconds <= 0)
             {
                 print("gameover");
+                isTiming = false;
             }
         }
     }

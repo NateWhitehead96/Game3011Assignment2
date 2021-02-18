@@ -15,7 +15,10 @@ public class LockScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(isLocked == false)
+        {
+            levelLock.GetComponent<SpriteRenderer>().color = Color.green;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
