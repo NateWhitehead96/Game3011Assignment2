@@ -8,16 +8,25 @@ public class ButtonBehaviour : MonoBehaviour
     public void OnEasy()
     {
         SceneManager.LoadScene("MainScene");
-        LockPickBehaviour.level++;
+        if (LockManager.instance.passed)
+        {
+            LockPickBehaviour.level++;
+        }
     }
     public void OnMedium()
     {
         SceneManager.LoadScene("LockMedium");
-        LockPickBehaviour.level++;
+        if (LockManager.instance.passed)
+        {
+            LockPickBehaviour.level++;
+        }
     }
     public void OnHard()
     {
         SceneManager.LoadScene("LockHard");
-        LockPickBehaviour.level++;
+        if (LockManager.instance.passed)
+        {
+            LockPickBehaviour.level++;
+        }
     }
 }

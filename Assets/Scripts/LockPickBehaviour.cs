@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LockPickBehaviour : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class LockPickBehaviour : MonoBehaviour
 
     public Transform playerSpawn;
     private BoxCollider2D collider;
+
+    public Text playerSkillText;
     
     // Start is called before the first frame update
     void Start()
@@ -19,12 +22,16 @@ public class LockPickBehaviour : MonoBehaviour
         selfrb = GetComponent<Rigidbody2D>();
         collider = GetComponent<BoxCollider2D>();
         collider.size = new Vector2(collider.size.x / level, collider.size.y / level); // reduce the size of collider base on player level to make the mazing easier
+        playerSkillText.text = "Lock pick skill: " + level.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Move();
+        if (FindObjectOfType<Timer>().isTiming)
+        {
+            Move();
+        }
     }
 
     private void Move() // movement 
@@ -57,6 +64,7 @@ public class LockPickBehaviour : MonoBehaviour
             print("hitting walls");
             transform.position = playerSpawn.position;
             transform.rotation = Quaternion.Euler(0,0,0);
+            angle = 0;
         }
     }
     private void OnTriggerStay2D(Collider2D collision)

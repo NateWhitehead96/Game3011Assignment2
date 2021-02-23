@@ -1,0 +1,27 @@
+GAME3011- Assignment 2 Design Document
+
+System - This lock pick mini game allows the player to control a key which must go over lock pads
+and activate them in order to open the lock. This system isn't a traditional skyrim like lock, or
+rythm based but instead ustilizes the players skill to navigate mazes. I would use a system like this
+for an RPG like game for opening doors or chests or as a standalone game, as the gameplay is solid
+enough as a good mobile game prototype.
+
+Inputs and System Design - As said before this lock pick system is more of a navigation and maze
+minigame. It uses the WASD keys to move around the internals of the lock to avoid the walls and
+reach lock pads which in turn will open up the locks. When over the pads pressing space will open
+them, and visually que the player by turning green on the lock itself.
+
+Levels of Difficulty - There are 3 levels of difficulty included in the game. Easy, the default,
+which has 1 lock and wide spacing providing little challenge to the player to get to the correct
+lock pad. However watch for the decoy pad, it does nothing! Medium, which ups the anti by having 
+2 locks. The navigation is a little tighter but in a pattern that the player can adapt to and make
+it through given the time alotted. Finally, Hard. This lock has 3 locks to switch with varying 
+obstacles to get through such as tight squeezes and decoys pads to watch for. The time is scaled
+for difficulty, easy getting 1 minute, medium getting 2, and hard getting 2 minutes and 30 seconds.
+
+Player Skill - Upon completing a lock the player gains a level. Based on trial and error I found
+the most balanced way to have this skill affect the system is to reduce the collision size of the
+player. The players collider is then scaled by their level, for example, collider size / level.
+The player's rotation speed is also scaled with level allowing for more fluid moveability.
+I was first going to scale the players movement speed and rotation by level but that made the game
+harder rather than easier.

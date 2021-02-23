@@ -23,7 +23,7 @@ public class Timer : MonoBehaviour
 
             seconds -= 1 * Time.deltaTime;
 
-            timer.text = minutes.ToString() + " : " + seconds.ToString();
+            timer.text = minutes.ToString() + " : " + seconds.ToString("#.00");
 
             if (minutes <= 0 && seconds <= 0)
             {

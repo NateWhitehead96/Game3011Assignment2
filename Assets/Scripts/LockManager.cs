@@ -22,10 +22,12 @@ public class LockManager : MonoBehaviour
     public LockScript[] locks;
     public int numLocks;
     public Canvas optionCanvas;
+    public bool passed;
     // Start is called before the first frame update
     void Start()
     {
         optionCanvas.gameObject.SetActive(false);
+        passed = false;
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("MainScene"))
         {
             numLocks = 1;
@@ -50,6 +52,7 @@ public class LockManager : MonoBehaviour
             {
                //numLocks--;
                 FindObjectOfType<Timer>().isTiming = false;
+                passed = true;
             }
         }
         if (locks.Length == 2)
@@ -58,6 +61,7 @@ public class LockManager : MonoBehaviour
             {
                 //numLocks--;
                 FindObjectOfType<Timer>().isTiming = false;
+                passed = true;
             }
         }
         if (locks.Length == 3)
@@ -66,6 +70,7 @@ public class LockManager : MonoBehaviour
             {
                 //numLocks--;
                 FindObjectOfType<Timer>().isTiming = false;
+                passed = true;
             }
         }
         if(FindObjectOfType<Timer>().isTiming == false)
